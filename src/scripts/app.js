@@ -5,7 +5,8 @@ const serchField = document.getElementById('searchuser');
 serchField.addEventListener('keyup', function (event) {
     const userText = event.target.value;
     if (userText === '') {
-
+        console.log("clearing contents");
+        ui.clearContents();
     } else {
         github.getUser(userText)
             .then(data => {
@@ -14,6 +15,7 @@ serchField.addEventListener('keyup', function (event) {
                     ui.clearContents();
                 } else {
                     ui.showProfile(data.profile);
+                    ui.showRepositories(data.reposiotories);
                 }
             });
     }
